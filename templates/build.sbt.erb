@@ -1,0 +1,13 @@
+name := "<%= name %>"
+
+version := "<%= version %>"
+
+scalaVersion := "<%= scala_version %>"
+
+<% resolvers.each do |r|%>
+resolvers += "<%= r.first %>" at "<%= r.last %>"
+<% end %>
+
+<% lib_deps.each do |ld|%>
+libraryDependencies += "<%= ld[0] %>" %% "<%= ld[1] %>" % "<%= ld[2] %>"
+<% end %>

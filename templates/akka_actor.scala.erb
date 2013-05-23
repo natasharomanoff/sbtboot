@@ -1,0 +1,23 @@
+package <%= package.packagize %>
+
+import akka.actor.{ Actor, ActorRef }
+import Actor._
+import akka.actor.ActorSystem
+import akka.actor.Props
+
+class <%= name.camelize %> extends Actor {
+  def receive = {
+    case "test" => println("received test")
+    case _ => println("received unknown message")
+  }
+}
+
+object <%= name.camelize %> {
+
+  def main(args: Array[String]): Unit = {
+    val asys = ActorSystem("ActorSystem")
+    val a = asys.actorOf(Props[<%= name.camelize %>])
+    a ! "test"
+  }
+
+}
